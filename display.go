@@ -3,50 +3,67 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"math/rand"
 	"os"
 	"strconv"
-	"time"
 )
 
 func displayInit() {
-	fmt.Print("Lets Play Tic-Tac-Toe!\nPreparing...")
-	for i := 0; i < 10; i++ {
-		fmt.Print("...")
-		time.Sleep(100 * time.Millisecond)
-	}
-
-	fmt.Print("\n")
-	for i := 0; i < 2; i++ {
-		fmt.Print("\033[1A")
-		fmt.Print("\033[K")
-	}
-	fmt.Print("\n\n\n\n\n\n\n\n")
+	fmt.Print("\033[4m")
+	fmt.Print("Welcome to Tic-Tac-Toe!\n\n")
+	fmt.Print("\033[0m")
 }
 
-func displayRestart() {
-	for i := 0; i < 8; i++ {
+func displayReset() {
+	for i := 0; i < 9; i++ {
 		fmt.Print("\033[1A")
 		fmt.Print("\033[K")
 	}
-	fmt.Print("Restarting Tic-Tac-Toe!\nPreparing...")
-	for i := 0; i < 10; i++ {
-		fmt.Print("...")
-		time.Sleep(100 * time.Millisecond)
+}
+
+func decideTurn() int {
+	turn := rand.Intn(2)
+	if turn == 0 {
+		fmt.Print("You're first, enemy's second.\n")
+	} else {
+		fmt.Print("Enemy's first, You're second.\n")
 	}
 
-	fmt.Print("\n")
-	for i := 0; i < 2; i++ {
-		fmt.Print("\033[1A")
-		fmt.Print("\033[K")
-	}
 	fmt.Print("\n\n\n\n\n\n\n\n")
+	return turn
 }
 
 func displayCurrent() {
 	fmt.Print("\033[8A")
-	field := fmt.Sprintf("┌───┬───┬───┐\n│ %s │ %s │ %s │\n├───┼───┼───┤\n│ %s │ %s │ %s │\n├───┼───┼───┤\n│ %s │ %s │ %s │\n└───┴───┴───┘\n",
-		state[0], state[1], state[2], state[3], state[4], state[5], state[6], state[7], state[8])
-	fmt.Print(field)
+	fmt.Print("┌───┬───┬───┐\n│   │   │   │\n├───┼───┼───┤\n│   │   │   │\n├───┼───┼───┤\n│   │   │   │\n└───┴───┴───┘\n")
+
+	fmt.Print("\033[6A")
+	for i := 0; i < 3; i++ {
+		fmt.Print("\033[2C")
+
+		for j := 0; j < 3; j++ {
+			displayCell(state[i*3+j])
+			fmt.Print("\033[3C")
+		}
+
+		fmt.Print("\n\n")
+	}
+
+	fmt.Print("\033[0m")
+}
+
+func displayCell(value string) {
+	switch value {
+	case "○":
+		fmt.Print("\033[31m")
+	case "x":
+		fmt.Print("\033[36m")
+	default:
+		fmt.Print("\033[0m")
+	}
+
+	fmt.Print(value)
+
 }
 
 func playerInput() {

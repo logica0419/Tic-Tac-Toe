@@ -2,19 +2,29 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 )
 
 var state [9]string
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+
 	displayInit()
 
 	for {
+		turn := decideTurn()
+
 		state = [9]string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}
 		displayCurrent()
 
 		for i := 0; i < 9; i++ {
-			playerInput()
+			if i%2 == turn {
+				playerInput()
+			} else {
+				enemyInput()
+			}
 			displayCurrent()
 
 			res := judge()
@@ -27,7 +37,7 @@ func main() {
 		displayRes(judge())
 
 		if ifRestart() {
-			displayRestart()
+			displayReset()
 		} else {
 			break
 		}

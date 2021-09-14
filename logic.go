@@ -18,24 +18,26 @@ func judge() string {
 }
 
 func enemyInput(diff int) {
-	notToLose := false
 	if diff == 2 {
-		notToLose = enemyNotToLose()
+		if enemyNotToLose() {
+			goto end
+		}
 	}
 
-	toWin := false
-	if !notToLose && diff > 0 {
-		toWin = enemyToWin()
+	if diff > 0 {
+		if enemyToWin() {
+			goto end
+		}
+
+		if state[4] != "○" && state[4] != "x" {
+			state[4] = "x"
+			goto end
+		}
 	}
 
-	if diff > 0 && state[4] != "○" && state[4] != "x" {
-		state[4] = "x"
-	}
+	enemyRand()
 
-	if !notToLose && !toWin {
-		enemyRand()
-	}
-
+end:
 	fmt.Print("\n")
 }
 

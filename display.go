@@ -16,14 +16,14 @@ func displayInit() {
 }
 
 func displayReset() {
-	for i := 0; i < 9; i++ {
+	for i := 0; i < 10; i++ {
 		fmt.Print("\033[1A")
 		fmt.Print("\033[K")
 	}
 }
 
 func selectDiff() int {
-	fmt.Print("Select Difficulty (easy = 0, normal = 1, difficult = 2) > ")
+	fmt.Print("Select Difficulty (Easy = 0, Normal = 1, Hard = 2) > ")
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		scanner.Scan()
@@ -34,11 +34,22 @@ func selectDiff() int {
 			intInput, _ := strconv.Atoi(in)
 			fmt.Print("\033[1A")
 			fmt.Print("\033[K")
+
+			switch intInput {
+			case 0:
+				fmt.Print("Difficulty: Easy\n")
+			case 1:
+				fmt.Print("Difficulty: Normal\n")
+			case 2:
+				fmt.Print("Difficulty: Hard\n")
+			}
+
 			return intInput
+
 		default:
 			fmt.Print("\033[1A")
 			fmt.Print("\033[K")
-			fmt.Print("Invalid input. Please input 0, 1 or 2 (easy = 0, normal = 1, difficult = 2) > ")
+			fmt.Print("Invalid input. Please input 0, 1 or 2 (Easy = 0, Normal = 1, Hard = 2) > ")
 			continue
 		}
 	}

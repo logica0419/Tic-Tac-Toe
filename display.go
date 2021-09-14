@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"math/rand"
 	"os"
 	"strconv"
 )
@@ -56,8 +55,7 @@ func selectDiff() int {
 	}
 }
 
-func decideTurn() int {
-	turn := rand.Intn(2)
+func displayTurn(turn int) {
 	if turn == 0 {
 		fmt.Print("You're first, enemy's second.\n")
 	} else {
@@ -65,7 +63,6 @@ func decideTurn() int {
 	}
 
 	fmt.Print("\n\n\n\n\n\n\n\n")
-	return turn
 }
 
 func displayCurrent() {

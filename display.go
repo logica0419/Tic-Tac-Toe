@@ -102,7 +102,7 @@ func displayCell(value string) {
 
 func playerInput() {
 	fmt.Print("\033[K")
-	fmt.Print("Where do you wanna place \"○\"? > ")
+	fmt.Print("Which cell do you wanna place \"○\"? (Type number) > ")
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		scanner.Scan()
@@ -124,7 +124,7 @@ func playerInput() {
 			fmt.Print("\033[1A")
 			fmt.Print("\033[K")
 			if ifUsed {
-				fmt.Print("That place is already filled. Please input another number > ")
+				fmt.Print("That cell is already filled. Please input another number > ")
 			} else {
 				fmt.Print("Invalid input. Please input valid number > ")
 			}
@@ -161,7 +161,7 @@ func displayRes(res string) {
 	case "○":
 		fmt.Print("You won! Congrats! ")
 	case "x":
-		fmt.Print("You lose... Waiting for your next challenge! ")
+		fmt.Print("You lose... Waiting for the next challenge! ")
 	case "":
 		fmt.Print("The game ended in a draw. Nice fight! ")
 	}

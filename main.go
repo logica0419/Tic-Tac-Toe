@@ -31,7 +31,6 @@ func main() {
 
 			res := judge()
 			if res != "" {
-
 				break
 			}
 		}
@@ -45,5 +44,5 @@ func main() {
 		}
 	}
 
-	fmt.Print("Bye\n")
+	fmt.Print("Bye-bye. Thank you for playing!\n")
 }

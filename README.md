@@ -23,6 +23,7 @@ go install github.com/logica0419/tic-tac-toe@latest
 
 環境を汚したくない人向け。
 
+前提: go & git  
 適当なディレクトリで
 
 ```sh

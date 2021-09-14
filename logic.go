@@ -28,22 +28,18 @@ func enemyInput(diff int) {
 		if enemyToWin() {
 			goto end
 		}
-
 		if diff == 2 {
 			if enemyNotToLose() {
 				goto end
 			}
-
 			if enemyRiichi() {
 				goto end
 			}
 		}
-
 		if enemyMiddle() {
 			goto end
 		}
 	}
-
 	enemyRand()
 
 end:

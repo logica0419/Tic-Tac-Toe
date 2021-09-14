@@ -110,9 +110,9 @@ func playerInput() {
 
 		switch in {
 		case "1", "2", "3", "4", "5", "6", "7", "8", "9":
-			inputNum, _ := strconv.Atoi(in)
-			if state[inputNum-1] == in {
-				state[inputNum-1] = "○"
+			intInput, _ := strconv.Atoi(in)
+			if state[intInput-1] == in {
+				state[intInput-1] = "○"
 				return
 			}
 			ifUsed = true

@@ -39,8 +39,7 @@ func enemyInput(diff int) {
 			}
 		}
 
-		if state[4] != "○" && state[4] != "x" {
-			state[4] = "x"
+		if enemyMiddle() {
 			goto end
 		}
 	}
@@ -119,6 +118,15 @@ func enemyRiichi() bool {
 				return true
 			}
 		}
+	}
+
+	return false
+}
+
+func enemyMiddle() bool {
+	if state[4] != "○" && state[4] != "x" {
+		state[4] = "x"
+		return true
 	}
 
 	return false

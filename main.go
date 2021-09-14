@@ -2,15 +2,11 @@ package main
 
 import (
 	"fmt"
-	"math/rand"
-	"time"
 )
 
 var state [9]string
 
 func main() {
-	rand.Seed(time.Now().UnixNano())
-
 	displayInit()
 
 	for {

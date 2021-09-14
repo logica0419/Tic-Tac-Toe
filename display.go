@@ -24,6 +24,7 @@ func displayReset() {
 
 func selectDiff() int {
 	fmt.Print("Select Difficulty (Easy = 0, Normal = 1, Hard = 2) > ")
+
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		scanner.Scan()
@@ -97,12 +98,12 @@ func displayCell(value string) {
 	}
 
 	fmt.Print(value)
-
 }
 
 func playerInput() {
 	fmt.Print("\033[K")
 	fmt.Print("Which cell do you wanna place \"○\"? (Type number) > ")
+
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		scanner.Scan()
@@ -136,6 +137,7 @@ func playerInput() {
 func ifRestart() bool {
 	fmt.Print("\033[K")
 	fmt.Print("Do you wanna play once more? (y/n) > ")
+
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		scanner.Scan()

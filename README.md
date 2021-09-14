@@ -28,7 +28,7 @@ go install github.com/logica0419/tic-tac-toe@latest
 
 ```sh
 git clone https://github.com/logica0419/tic-tac-toe
-cd Tic-Tac-Toe
+cd tic-tac-toe
 go run *.go
 ```
 
@@ -51,5 +51,3 @@ go run *.go
 - Hard
   - 次のターンで負けそうな (○ の 2つ並びがある) 時、それを阻止する手を出す
   - 無ければ Normal と同じ手順をたどる
-
-という感じで制作しました。

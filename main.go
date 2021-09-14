@@ -14,6 +14,8 @@ func main() {
 	displayInit()
 
 	for {
+		diff := selectDiff()
+
 		turn := decideTurn()
 
 		state = [9]string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}
@@ -23,7 +25,7 @@ func main() {
 			if i%2 == turn {
 				playerInput()
 			} else {
-				enemyInput()
+				enemyInput(diff)
 			}
 			displayCurrent()
 

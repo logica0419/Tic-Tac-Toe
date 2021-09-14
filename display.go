@@ -9,6 +9,7 @@ import (
 )
 
 func displayInit() {
+	fmt.Print("\033[1m")
 	fmt.Print("\033[4m")
 	fmt.Print("Welcome to Tic-Tac-Toe!\n\n")
 	fmt.Print("\033[0m")
@@ -18,6 +19,28 @@ func displayReset() {
 	for i := 0; i < 9; i++ {
 		fmt.Print("\033[1A")
 		fmt.Print("\033[K")
+	}
+}
+
+func selectDiff() int {
+	fmt.Print("Select Difficulty (easy = 0, normal = 1, difficult = 2) > ")
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		scanner.Scan()
+		in := scanner.Text()
+
+		switch in {
+		case "0", "1", "2":
+			intInput, _ := strconv.Atoi(in)
+			fmt.Print("\033[1A")
+			fmt.Print("\033[K")
+			return intInput
+		default:
+			fmt.Print("\033[1A")
+			fmt.Print("\033[K")
+			fmt.Print("Invalid input. Please input 0, 1 or 2 (easy = 0, normal = 1, difficult = 2) > ")
+			continue
+		}
 	}
 }
 
@@ -129,6 +152,6 @@ func displayRes(res string) {
 	case "x":
 		fmt.Print("You lose... Waiting for your next challenge! ")
 	case "":
-		fmt.Print("The game is draw. Nice fight! ")
+		fmt.Print("The game ended in a draw. Nice fight! ")
 	}
 }

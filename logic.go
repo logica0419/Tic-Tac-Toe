@@ -18,15 +18,19 @@ func judge() string {
 }
 
 func enemyInput(diff int) {
-	if diff == 2 {
-		if enemyNotToLose() {
-			goto end
-		}
-	}
-
 	if diff > 0 {
 		if enemyToWin() {
 			goto end
+		}
+
+		if diff == 2 {
+			if enemyNotToLose() {
+				goto end
+			}
+
+			if enemyRiichi() {
+				goto end
+			}
 		}
 
 		if state[4] != "○" && state[4] != "x" {
@@ -77,6 +81,37 @@ func enemyToWin() bool {
 		if state[v[0]] == "x" && state[v[2]] == "x" && state[v[1]] != "○" {
 			state[v[1]] = "x"
 			return true
+		}
+	}
+
+	return false
+}
+
+func enemyRiichi() bool {
+	for _, v := range judgePairs {
+		if state[v[0]] == "x" {
+			if state[v[1]] != "x" && state[v[1]] != "○" && state[v[2]] != "x" && state[v[2]] != "○" {
+				state[v[rand.Intn(2)+1]] = "x"
+				return true
+			}
+		}
+
+		if state[v[1]] == "x" {
+			if state[v[0]] != "x" && state[v[0]] != "○" && state[v[2]] != "x" && state[v[2]] != "○" {
+				if rand.Intn(2) == 0 {
+					state[v[0]] = "x"
+				} else {
+					state[v[2]] = "x"
+				}
+				return true
+			}
+		}
+
+		if state[v[2]] == "x" {
+			if state[v[0]] != "x" && state[v[0]] != "○" && state[v[1]] != "x" && state[v[1]] != "○" {
+				state[v[rand.Intn(2)]] = "x"
+				return true
+			}
 		}
 	}
 
